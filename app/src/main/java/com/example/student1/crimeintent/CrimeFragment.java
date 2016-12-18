@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -21,19 +22,29 @@ public class CrimeFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         //Закоменченные строчки = ошибка
-        //mCrimes = new Crime("Crime");
-      //  mCrime = CrimeLab.get(getActivity()).getmCrimes();
+      //  mCrimes = new Crime("Crime");
+        /mCrime = CrimeLab.get(getActivity()).getmCrimes();
         for (Crime c:mCrimes){
             Log.v("CRIME", c + "");
         }
     }
+    Button ButtonTitle;
     EditText mTitleField;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_crime,container,false);
-        Button getTitle = (Button)v.findViewById(R.id.getTitle);
+        ButtonTitle = (Button)v.findViewById(R.id.getTitle);
+        ButtonTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast toast = Toast.makeText(getActivity().getApplicationContext(),
+                        mCrime.getTitle(),
+                        Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        });
         mTitleField =(EditText)v.findViewById(R.id.Fragment_Crime_edit_text2);
 
         mTitleField.addTextChangedListener(new TextWatcher() {

@@ -15,7 +15,7 @@ public class MainActivity extends FragmentActivity {
         Fragment fragment = fm.findFragmentById(R.id.fragmentContainer);
 
         if (fragment==null){
-            fragment = new CrimeFragment();
+            fragment = new ListOfCrimes();
             fm.beginTransaction().add(R.id.fragmentContainer,fragment).commit();
 
         }
