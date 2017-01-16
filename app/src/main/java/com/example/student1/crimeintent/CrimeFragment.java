@@ -10,26 +10,36 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class CrimeFragment extends Fragment {
+    private Button mDateButton;
+    private CheckBox mSolvedCheckBox;
     Crime mCrime;
     private ArrayList <Crime> mCrimes;
+    private Button ButtonTitle;
+    private EditText mTitleField;
+
+   // public ArrayList<Crime> getmCrimes() {
+     //   return mCrimes;
+    //}
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        //Закоменченные строчки = ошибка
-      //  mCrimes = new Crime("Crime");
-        /mCrime = CrimeLab.get(getActivity()).getmCrimes();
+         mCrime = new Crime("Title");
+         mCrimes = CrimeLab.get(getActivity()).getmCrimes();
         for (Crime c:mCrimes){
             Log.v("CRIME", c + "");
         }
+
     }
-    Button ButtonTitle;
-    EditText mTitleField;
+
 
     @Nullable
     @Override
@@ -63,6 +73,19 @@ public class CrimeFragment extends Fragment {
 
             }
         });
+        mDateButton = (Button)v.findViewById(R.id.crime_date);
+        mDateButton.setText(mCrime.getmDate().toString());
+        mDateButton.setEnabled(false);
+
+        mSolvedCheckBox=(CheckBox)v.findViewById(R.id.checkBox);
+        mSolvedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                mCrime.setSolved(isChecked);
+            }
+        });
         return v;
+
+
     }
 }

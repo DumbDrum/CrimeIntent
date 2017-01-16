@@ -31,7 +31,8 @@ public class CrimeLab {
         }
         return sCrimeLab;
     }
-    public ArrayList<Crime>getmCrimes(){
+    public ArrayList<Crime>
+    getmCrimes(){
         return mCrimes;
     }
     public Crime getCrime(UUID id){

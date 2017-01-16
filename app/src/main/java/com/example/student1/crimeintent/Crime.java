@@ -1,5 +1,6 @@
 package com.example.student1.crimeintent;
 
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -7,9 +8,19 @@ import java.util.UUID;
  */
 
 public class Crime {
+    private Date mDate;
     private UUID id;
     private String title;
     private Boolean isSolved;
+
+    public Date getmDate() {
+        return mDate;
+    }
+
+    public void setmDate(Date mDate) {
+        this.mDate = mDate;
+    }
+
 
     public Boolean getSolved() {
         return isSolved;
@@ -24,6 +35,7 @@ public class Crime {
     }
 
     public Crime(UUID id, String title) {
+        mDate = new Date();
         this.id = id;
         this.title = title;
     }
@@ -43,4 +55,5 @@ public class Crime {
     public void setTitle(String title) {
         this.title = title;
     }
-}
+
+    }
